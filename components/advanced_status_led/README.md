@@ -1,6 +1,6 @@
 # Advanced Status LED Component
 
-![Demo](https://pan.cheshuimanong.com/f/0OqCD/advanced_status_led_demo.gif)
+[Demo](https://pan.cheshuimanong.com/f/9g0f3/advanced_status_led_demo.mp4)
 
 Example:
 
