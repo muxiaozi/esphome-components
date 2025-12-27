@@ -23,8 +23,7 @@ CsmnKeyPoints::CsmnKeyPoints() {
 }
 
 void CsmnKeyPoints::setup() {
-  if (!this->sdcard_->setup(this->miso_pin_->get_pin(), this->mosi_pin_->get_pin(), this->clk_pin_->get_pin(),
-                            this->cs_pin_->get_pin())) {
+  if (!this->sdcard_->setup(this->cmd_pin_->get_pin(), this->clk_pin_->get_pin(), this->d0_pin_->get_pin())) {
     ESP_LOGE(TAG, "SD card setup failed");
     this->mark_failed(LOG_STR("SD card setup failed"));
     return;
@@ -58,10 +57,9 @@ void CsmnKeyPoints::dump_config() {
   ESP_LOGCONFIG(TAG, "  UUID: %s", this->uuid_.c_str());
   ESP_LOGCONFIG(TAG, "  Http Base URL: %s", this->base_url_.c_str());
   ESP_LOGCONFIG(TAG, "  SD Card:");
-  ESP_LOGCONFIG(TAG, "    MOSI Pin: %u", this->mosi_pin_->get_pin());
-  ESP_LOGCONFIG(TAG, "    MISO Pin: %u", this->miso_pin_->get_pin());
+  ESP_LOGCONFIG(TAG, "    CMD Pin: %u", this->cmd_pin_->get_pin());
   ESP_LOGCONFIG(TAG, "    CLK Pin: %u", this->clk_pin_->get_pin());
-  ESP_LOGCONFIG(TAG, "    CS Pin: %u", this->cs_pin_->get_pin());
+  ESP_LOGCONFIG(TAG, "    D0 Pin: %u", this->d0_pin_->get_pin());
   ESP_LOGCONFIG(TAG, "  Record Status:");
   ESP_LOGCONFIG(TAG, "    Create Index: %u", global_csmn_keypoints_config->get_create_index());
   ESP_LOGCONFIG(TAG, "    Upload Index: %u", global_csmn_keypoints_config->get_upload_index());
@@ -116,7 +114,7 @@ void CsmnKeyPoints::stop() {
   this->sdcard_->finish(stream_info.get_sample_rate(), stream_info.get_bits_per_sample(), stream_info.get_channels());
   std::string file_path = this->sdcard_->get_filepath(record_id);
   auto file_size = this->sdcard_->get_file_size();
-  uint16_t file_crc16 = 0; // 需要开一个线程计算CRC16，暂时设为0
+  uint16_t file_crc16 = 0;  // 需要开一个线程计算CRC16，暂时设为0
   global_csmn_keypoints_config->finish_record(duration_seconds, file_size, file_crc16);
 }
 

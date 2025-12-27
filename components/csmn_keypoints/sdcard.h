@@ -9,7 +9,7 @@ namespace csmn_keypoints {
 
 class Sdcard {
  public:
-  bool setup(uint8_t miso_pin, uint8_t mosi_pin, uint8_t clk_pin, uint8_t cs_pin);
+  bool setup(uint8_t cmd_pin, uint8_t clk_pin, uint8_t d0_pin);
 
   bool open_wav(uint32_t record_id);
   void write_header(uint32_t sample_rate, uint16_t bits_per_sample, uint16_t channels, uint32_t sample_size = 0);

@@ -38,10 +38,9 @@ class CsmnKeyPoints : public Component {
     this->api_->set_http_request(http_request);
   }
   void set_microphone(microphone::Microphone *microphone) { this->microphone_ = microphone; }
-  void set_miso_pin(GPIOPin *miso) { this->miso_pin_ = static_cast<InternalGPIOPin *>(miso); }
-  void set_mosi_pin(GPIOPin *mosi) { this->mosi_pin_ = static_cast<InternalGPIOPin *>(mosi); }
+  void set_cmd_pin(GPIOPin *cmd) { this->cmd_pin_ = static_cast<InternalGPIOPin *>(cmd); }
+  void set_d0_pin(GPIOPin *d0) { this->d0_pin_ = static_cast<InternalGPIOPin *>(d0); }
   void set_clk_pin(GPIOPin *clk) { this->clk_pin_ = static_cast<InternalGPIOPin *>(clk); }
-  void set_cs_pin(GPIOPin *cs) { this->cs_pin_ = static_cast<InternalGPIOPin *>(cs); }
   void set_base_url(const std::string &base_url) {
     this->base_url_ = base_url;
     this->api_->set_base_url(base_url);
@@ -54,10 +53,9 @@ class CsmnKeyPoints : public Component {
  private:
   http_request::HttpRequestComponent *http_request_{nullptr};
   microphone::Microphone *microphone_{nullptr};
-  InternalGPIOPin *miso_pin_{nullptr};
-  InternalGPIOPin *mosi_pin_{nullptr};
+  InternalGPIOPin *cmd_pin_{nullptr};
+  InternalGPIOPin *d0_pin_{nullptr};
   InternalGPIOPin *clk_pin_{nullptr};
-  InternalGPIOPin *cs_pin_{nullptr};
   bool recording_{false};
   std::unique_ptr<Sdcard> sdcard_{};
   std::unique_ptr<Uploader> uploader_{};
