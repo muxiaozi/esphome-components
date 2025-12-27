@@ -19,3 +19,4 @@ external_components:
 | zhiyuan_relay | 志远继电器 |
 | buruiter_rotary | 布瑞特旋转编码器 |
 | csmn_keypoints | 划重点组件，用于关键点记录和管理 |
+| csmn_emitter | 发射器 |
