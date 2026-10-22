@@ -16,3 +16,5 @@ external_components:
 | Component | Description |
 |-----------|-------------|
 | advanced_status_led | 可以区分网络状态、API连接状态、MQTT连接状态以及错误和其他警告的状态指示器 |
+| epaper | 支持SSD1608/SSD1619A电子墨水屏的组件 |
+| event_hub | 提供事件中心功能的组件 |
